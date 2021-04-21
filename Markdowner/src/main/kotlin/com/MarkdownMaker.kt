@@ -17,8 +17,7 @@ class MarkdownMaker {
         crawler = EdgeCrawler(edgeOptions, configPaths)
 
         if (pn == "") {
-            println("[Markdowner Log] ERROR_CODE_2 Markdown Maker didn't get Problem Number.")
-            throw IOException()
+            throw Exception("Markdown Maker did not receive the problem number as input.")
         }
         else problemNumber = pn
 
@@ -32,13 +31,12 @@ class MarkdownMaker {
             mdfmm = MDFrontMatterMaker(crawler)
             mdbm = MDBodyMaker(crawler, problemNumber)
         } catch (e: Exception) {
-            println("[Markdowner Log] ERROR_CODE_3 Failed to load the Edge driver...")
-            println(e)
+            e.printStackTrace()
+            throw Exception("ERROR -> Failed to load the Edge driver...")
         }
 
-        println("[Markdowner Log] 8. Writing the MD at your specified path.")
+        println("[Markdowner Log] 5. Writing the MD at your specified path.")
         makeMDFile()
-
     }
 
     private fun makeMDFile() {
@@ -52,13 +50,13 @@ class MarkdownMaker {
         try {
             bw.write(mdfmm.makeMDFrontMatter() + mdbm.makeProblemDescriptions() + mdbm.loadKtSource())
         } catch (e: Exception) {
-            println("Can't write the ${dateFormat.format(currentDateTime)}-${problemNumber}.md")
             e.printStackTrace()
+            throw IllegalArgumentException("ERROR -> ${dateFormat.format(currentDateTime)}-BOJ${problemNumber}.md IS NOT CREATED PROPERLY.")
         } finally {
-            println("$fileName is made successfully!")
             bw.close()
             fw.close()
         }
+        println("[Markdowner Log] 9. $fileName is made at specific path you configured successfully.")
     }
 
 }

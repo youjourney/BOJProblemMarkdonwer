@@ -1,7 +1,5 @@
 package com
 
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriverException
 import org.openqa.selenium.edge.EdgeDriver
 import org.openqa.selenium.edge.EdgeOptions
 
@@ -11,7 +9,7 @@ class EdgeCrawler {
     val edgeDriver: EdgeDriver by lazy { EdgeDriver(edgeOption) }
 
     constructor(edgeOptions: Array<String>, configPaths: Array<String>) {
-        println("[Markdonwer Log] 2. Selenium Edge Crawler initializing...\n")
+        println("[Markdonwer Log] 2. Selenium Edge Crawler initializing...")
 
         // configPaths[0] -> webDriverPath
         System.setProperty(webDriverID, configPaths[0])
@@ -23,8 +21,8 @@ class EdgeCrawler {
                 edgeOption.addArguments(edgeOptions[it])
             }
         } catch (e: Exception) {
-            println("[Markdonwer Log] ERROR_CODE_1 Failed Adapting Edge Options.")
-            println(e)
+            e.printStackTrace()
+            throw IllegalArgumentException("ERROR -> Failed Adapting Edge Options.")
         }
 
     }

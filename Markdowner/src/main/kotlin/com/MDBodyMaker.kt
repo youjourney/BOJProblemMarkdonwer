@@ -17,7 +17,7 @@ class MDBodyMaker {
     }
 
     fun makeProblemDescriptions(): String {
-        println("[Markdowner Log] 6. Start making the MD body of problem descriptions")
+        println("[Markdowner Log] 7. Start making the MD body of problem descriptions")
         val strArr = mutableListOf<String>()
 
         fun br3() = strArr.add("\n\n\n")
@@ -125,10 +125,10 @@ class MDBodyMaker {
     }
 
     fun loadKtSource() : String {
-        println("[Markdowner Log] 7. Start making the MD body of the problem source.")
+        println("[Markdowner Log] 8. Start making the MD body of the problem source.")
         val str = mutableListOf<String>()
-        val path = "/Users/choiyoujun/Documents/GIT/ProblemSolutions/BOJ${problem}/src/main/kotlin/main.kt"
-        //val path = "/Users/사용자폴더/Documents/GIT_ProblemSolutions/ProblemSolutions/BOJ${problem}/src/main/kotlin/main.kt"
+        val path = "/Users/choiyoujun/Documents/GIT/ProblemSolutions/BOJ${problem}/src/com.main/kotlin/com.main.kt"
+        //val path = "/Users/사용자폴더/Documents/GIT_ProblemSolutions/ProblemSolutions/BOJ${problem}/src/com.main/kotlin/com.main.kt"
 
         try {
             val file = File(path)
@@ -144,6 +144,7 @@ class MDBodyMaker {
             fr.close()
         } catch (e: Exception) {
             e.printStackTrace()
+            throw IllegalArgumentException("ERROR -> Problem source file does not exist.")
         }
 
         return str.joinToString("\n")

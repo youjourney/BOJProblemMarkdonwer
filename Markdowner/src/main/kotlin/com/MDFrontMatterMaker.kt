@@ -13,7 +13,7 @@ class MDFrontMatterMaker {
     }
 
     fun makeMDFrontMatter(): String {
-        println("[Markdowner Log] 5. Start making MD front matters")
+        println("[Markdowner Log] 6. Start making MD front matters")
         val strArr = mutableListOf<String>()
 
         //begin frontmatters
