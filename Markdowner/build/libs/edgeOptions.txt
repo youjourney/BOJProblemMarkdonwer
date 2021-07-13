@@ -1,0 +1,6 @@
+headless
+window-size=1920x1080
+disable-gpu
+disable-infobars
+--disable-extensions
+--disable-default-apps
