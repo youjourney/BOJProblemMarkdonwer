@@ -27,7 +27,7 @@ class MDFrontMatterMaker {
                     .split("번:")
                     .map { it.trim() }
 
-                "title: \"[백준] ${title[1]} (${title[0]})(kotlin)\""
+                "title: \"[백준] ${title[1]} (${title[0]})\""
             }
         )
 
@@ -63,7 +63,7 @@ class MDFrontMatterMaker {
         strArr.add("categories:\n- boj")
 
         //tags
-        strArr.add("tags:\n- algorithm\n- kotlin")
+        strArr.add("tags:\n- algorithm\n")
 
         //last_modified_at
         strArr.add(

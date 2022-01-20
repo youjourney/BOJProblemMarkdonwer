@@ -50,7 +50,7 @@ class MarkdownMaker {
         val bw = BufferedWriter(fw)
 
         try {
-            bw.write(mdfmm.makeMDFrontMatter() + mdbm.makeProblemDescriptions() + mdbm.loadKtSource())
+            bw.write(mdfmm.makeMDFrontMatter() + mdbm.makeProblemDescriptions() + mdbm.loadKtSource() + mdbm.loadSwiftSource())
             println("[Markdowner Log] 9. $fileName is made at specific path you configured successfully.")
         } catch (e: Exception) {
             e.printStackTrace()

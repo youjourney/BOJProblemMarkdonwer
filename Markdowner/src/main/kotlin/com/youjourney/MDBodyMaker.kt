@@ -123,9 +123,9 @@ class MDBodyMaker {
     }
 
     fun loadKtSource() : String {
-        println("[Markdowner Log] 8. Start making the MD body of the problem source.")
+        println("[Markdowner Log] 8. Start making the MD body of the problem source(KOTLIN).")
         val str = mutableListOf<String>()
-        val path = "/Users/choiyoujun/Documents/GIT/ProblemSolutions/BOJ${problem}/src/main/kotlin/main.kt"
+        val path = "/Users/choiyoujun/Documents/GIT/ProblemSolutions/BOJ${problem}_KOTLIN/src/main/kotlin/main.kt"
         //val path = "/Users/사용자폴더/Documents/GIT_ProblemSolutions/ProblemSolutions/BOJ${problem}/src/com.youjourney.main/kotlin/com.youjourney.main.kt"
 
         try {
@@ -133,7 +133,7 @@ class MDBodyMaker {
             val fr = FileReader(file)
             val br = BufferedReader(fr)
 
-            str.add("### 문제 풀이1")
+            str.add("### 문제 풀이(KOTLIN) 1")
             str.add("```kotlin")
             str.addAll(br.readLines())
             str.add("```")
@@ -141,8 +141,35 @@ class MDBodyMaker {
             br.close()
             fr.close()
         } catch (e: Exception) {
+//            e.printStackTrace()
+//            throw IllegalArgumentException("ERROR -> Problem source file(KOTLIN) does not exist.")
+            println("ERROR -> Problem source file(KOTLIN) does not exist.")
+            return ""
+        }
+
+        return str.joinToString("\n")
+    }
+
+    fun loadSwiftSource() : String {
+        println("[Markdowner Log] 8. Start making the MD body of the problem source(SWIFT).")
+        val str = mutableListOf<String>()
+        val path = "/Users/choiyoujun/Documents/GIT/ProblemSolutions/BOJ${problem}_SWIFT/BOJ${problem}_SWIFT/main.swift"
+
+        try {
+            val file = File(path)
+            val fr = FileReader(file)
+            val br = BufferedReader(fr)
+
+            str.add("### 문제 풀이(SWIFT) 1")
+            str.add("```swift")
+            str.addAll(br.readLines())
+            str.add("```")
+
+            br.close()
+            fr.close()
+        } catch (e: Exception) {
             e.printStackTrace()
-            throw IllegalArgumentException("ERROR -> Problem source file does not exist.")
+            throw IllegalArgumentException("ERROR -> Problem source file(SWIFT) does not exist.")
         }
 
         return str.joinToString("\n")

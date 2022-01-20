@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'youjourney.boj'
-version = '0.1.5'
+version = '0.2.0'
 
 jar {
     manifest {
@@ -24,7 +24,7 @@ repositories {
 // https://www.selenium.dev/downloads/
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-rc-1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.1'
 }
 
 test {
